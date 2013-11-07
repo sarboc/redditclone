@@ -1,0 +1,18 @@
+<h1 class="page-header text-center"><%= @post.title %></h1>
+<p><%= @post.description %></p>
+<p><%= link_to @post.url %></p>
+<ul>
+  <%= @comments.each do |comment| %>
+    <li><%= comment.text %></li>
+  <% end %>
+</ul>
+
+<%= form_for [@post, @post.comments.build] do |f| %>
+  <div class="form-group">
+    <%= f.label :text %>
+    <%= f.text_area :text, class: "form-control", rows: "3" %>
+  </div>
+
+  <%= f.submit class: "btn btn-primary" %>
+
+<% end %>
