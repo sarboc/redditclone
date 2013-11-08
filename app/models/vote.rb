@@ -1,9 +1,6 @@
 class Vote < ActiveRecord::Base
   attr_accessible :vote
 
-  after_save :count_votes
-  after_destroy :count_votes
-
   belongs_to :votable, polymorphic: true
   belongs_to :user
 
@@ -16,9 +13,12 @@ class Vote < ActiveRecord::Base
   #   end
   # end
 
+  after_save :q_background #:count_votes
+  after_destroy :q_background #:count_votes
 
-
-  private
+  def q_background
+    VoteCount.perform_async(self.id)
+  end
 
   def count_votes
     model = self.votable

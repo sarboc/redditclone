@@ -2,6 +2,7 @@ class VotesController < ApplicationController
   before_filter :authenticate_user!
 
   def index
+
     votes = []
     posts = Post.all
     comments = Comment.all

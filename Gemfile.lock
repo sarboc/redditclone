@@ -35,6 +35,8 @@ GEM
       railties (>= 3.1.0)
       sass-rails (>= 3.1.0)
     builder (3.0.4)
+    celluloid (0.15.2)
+      timers (~> 1.1.0)
     coderay (1.0.9)
     coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)
@@ -43,6 +45,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.6.3)
+    connection_pool (1.1.0)
     devise (3.2.0)
       bcrypt-ruby (~> 3.0)
       orm_adapter (~> 0.1)
@@ -99,11 +102,20 @@ GEM
     rake (10.1.0)
     rdoc (3.12.2)
       json (~> 1.4)
+    redis (3.0.5)
+    redis-namespace (1.3.2)
+      redis (~> 3.0.4)
     sass (3.2.12)
     sass-rails (3.2.6)
       railties (~> 3.2.0)
       sass (>= 3.1.10)
       tilt (~> 1.3)
+    sidekiq (2.16.1)
+      celluloid (>= 0.15.2)
+      connection_pool (>= 1.0.0)
+      json
+      redis (>= 3.0.4)
+      redis-namespace (>= 1.3.1)
     slop (3.4.6)
     sprockets (2.2.2)
       hike (~> 1.2)
@@ -115,6 +127,7 @@ GEM
     thread_safe (0.1.3)
       atomic
     tilt (1.4.1)
+    timers (1.1.0)
     treetop (1.4.15)
       polyglot
       polyglot (>= 0.3.1)
@@ -138,5 +151,6 @@ DEPENDENCIES
   quiet_assets
   rails (= 3.2.14)
   sass-rails (~> 3.2.3)
+  sidekiq
   sqlite3
   uglifier (>= 1.0.3)

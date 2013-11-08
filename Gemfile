@@ -7,6 +7,7 @@ gem 'rails', '3.2.14'
 
 gem 'sqlite3'
 gem 'devise'
+gem 'sidekiq'
 
 
 # Gems used only for assets and not required
