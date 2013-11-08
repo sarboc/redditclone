@@ -1,5 +1,5 @@
-<li>
-  <p><%= comment.text %>  <% if current_user %><a href="#">Like</a><% end %></p>
+<li data-id="<%= comment.id %>">
+  <p><%= comment.text %> (<%= comment.vote_count %>) <% if current_user %><a href="#" class="like-button">+1</a><% end %></p>
   <div class="reply">
     <% if current_user %>
       <p><a href="#" class="reply-link">Reply</a></p>

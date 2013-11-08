@@ -6,5 +6,14 @@ class Vote < ActiveRecord::Base
 
   validates :vote, presence: true
 
+  after_save :count_votes
+
+  private
+
+  def count_votes
+    model = self.votable
+    count = model.votes.count
+    model.update_attributes(vote_count: count)
+  end
 
 end

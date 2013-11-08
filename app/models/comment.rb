@@ -1,5 +1,5 @@
 class Comment < ActiveRecord::Base
-  attr_accessible :text
+  attr_accessible :text, :vote_count
 
   belongs_to :commentable, polymorphic: true
   belongs_to :user

@@ -6,3 +6,12 @@ $ ->
   $(".reply-link").click (event) ->
     event.preventDefault()
     $(event.currentTarget).parent().siblings(".reply-form").toggleClass("hidden")
+
+  $(".like-button").click (event) ->
+    event.preventDefault()
+
+    $.post ("/votes"),
+      {id: $(@).parents("li").data("id")}
+      (data) ->
+        console.log data
+        console.log "something"
