@@ -10,4 +10,7 @@ RedditClone::Application.routes.draw do
 
   resources :comments
 
+  # get "login", as: "new_user_session_path"
+  # get "logout", as: "destroy_user_session_path"
+
 end

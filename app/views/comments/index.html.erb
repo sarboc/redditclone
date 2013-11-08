@@ -1,9 +1,9 @@
 <h1 class="page-header text-center"><%= @post.title %></h1>
 <p><%= @post.description %></p>
 <p><%= link_to @post.url %></p>
-<ul>
+<ul class="list-unstyled">
   <% @comments.each do |comment| %>
-    <%= render "comment" comment %>
+    <%= render "comment", comment: comment %>
   <% end %>
 </ul>
 

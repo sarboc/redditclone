@@ -1,5 +1,15 @@
 <li>
   <p><%= comment.text %></p>
-  <p>Reply:</p>
-  <%= render "comment_comment_form", comment: comment %>
+  <div class="reply">
+    <p><a href="#" class="reply-link">Reply</a></p>
+    <div class="reply-form hidden">
+      <%= render "comment_comment_form", comment: comment %>
+    </div>
+  </div>
+  <ul>
+    <% comment.comments.each do |comment| %>
+      <%= render "comment", comment: comment %>
+    <% end %>
+  </ul>
+
 </li>

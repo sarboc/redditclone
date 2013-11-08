@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_filter :authenticate_user!
+  before_filter :authenticate_user!, skip: :index
 
   def index
     @posts = Post.all
@@ -17,7 +17,7 @@ class PostsController < ApplicationController
     redirect_to posts_path
   end
 
-  def show
-  end
+  # def show
+  # end
 
 end
