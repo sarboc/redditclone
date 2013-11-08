@@ -4,7 +4,7 @@ class CreateComments < ActiveRecord::Migration
       t.text :text
       t.references :user
       t.references :commentable, polymorphic: true
-      t.integer :vote_count
+      t.integer :vote_count, default: 0
       t.timestamps
     end
   end

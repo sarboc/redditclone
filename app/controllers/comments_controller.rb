@@ -6,10 +6,6 @@ class CommentsController < ApplicationController
     @comments = @post.comments
   end
 
-  # def new
-  #   @post = Post.find(params[:post_id])
-  # end
-
   def create
     if params[:post_id]
       @model = Post.find(params[:post_id])
@@ -28,7 +24,5 @@ class CommentsController < ApplicationController
     redirect_to post_comments_path(@comment.top_level_post)
   end
 
-  def show
-  end
 
 end

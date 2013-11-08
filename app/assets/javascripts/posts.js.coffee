@@ -15,3 +15,8 @@ $ ->
       (data) ->
         console.log data
         console.log "something"
+
+  getVoteCount = () ->
+    console.log "Interval is working!"
+
+  # setInterval getVoteCount, 1000

@@ -1,10 +1,10 @@
 <h1 class="page-header text-center"><%= @post.title %></h1>
 <p><%= @post.description %></p>
 <p><%= link_to @post.url %></p>
-<ul class="list-unstyled">
+<ul>
   <% @comments.each do |comment| %>
     <%= render "comment", comment: comment %>
   <% end %>
 </ul>
 
-<%= render "comment_form" %>
+<% if current_user %><%= render "comment_form" %><% end %>

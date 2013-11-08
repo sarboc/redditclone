@@ -4,11 +4,11 @@ RedditClone::Application.routes.draw do
 
   devise_for :users
 
-  resources :posts do
-    resources :comments
+  resources :posts, only: [:index, :new, :create] do
+    resources :comments, only: [:create, :index]
   end
 
-  resources :comments
+  resources :comments, only: [:create]
 
   post "/votes", to: "votes#create"
 
