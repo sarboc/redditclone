@@ -5,18 +5,19 @@ $ ->
 
   $(".reply-link").click (event) ->
     event.preventDefault()
-    $(event.currentTarget).parent().siblings(".reply-form").toggleClass("hidden")
+    $(event.currentTarget).parent().siblings(".reply-form").toggleClass "hidden"
 
   $(".like-button").click (event) ->
     event.preventDefault()
 
     $.post ("/votes"),
       {id: $(@).parents("li").data("id")}
-      (data) ->
-        console.log data
-        console.log "something"
 
   getVoteCount = () ->
-    console.log "Interval is working!"
+    $.get ("/votes"), (data) ->
+      # console.log data
+      for comment in data
+        $("li[data-id=#{comment.id}]").children().children(".score").text(comment.votes)
+        # console.log "#{comment.type}, #{comment.id}, #{comment.votes}"
 
-  # setInterval getVoteCount, 1000
+  setInterval getVoteCount, 5000

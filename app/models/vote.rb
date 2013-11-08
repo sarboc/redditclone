@@ -1,6 +1,9 @@
 class Vote < ActiveRecord::Base
   attr_accessible :vote
 
+  after_save :count_votes
+  after_destroy :count_votes
+
   belongs_to :votable, polymorphic: true
   belongs_to :user
 
@@ -13,8 +16,7 @@ class Vote < ActiveRecord::Base
   #   end
   # end
 
-  after_save :count_votes
-  after_destroy :count_votes
+
 
   private
 
