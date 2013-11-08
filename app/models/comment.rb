@@ -10,4 +10,16 @@ class Comment < ActiveRecord::Base
   validates :user_id, presence: true
   validates :commentable, presence: true
 
+  def top_level_post
+    comment = self
+
+    until comment.commentable_type == "Post"
+      comment = comment.commentable
+      puts comment
+    end
+
+    comment.commentable
+
+  end
+
 end

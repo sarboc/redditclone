@@ -1,0 +1,9 @@
+<%= form_for [comment, comment.comments.build], url: comments_path do |f| %>
+  <div class="form-group">
+    <%= f.label :text %>
+    <%= f.text_area :text, class: "form-control", rows: "3" %>
+  </div>
+  <%= f.hidden_field :commentable_id, value: comment.id %>
+  <%= f.submit class: "btn btn-primary" %>
+
+<% end %>

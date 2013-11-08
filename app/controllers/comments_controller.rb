@@ -6,18 +6,26 @@ class CommentsController < ApplicationController
     @comments = @post.comments
   end
 
-  def new
-    @post = Post.find(params[:post_id])
-  end
+  # def new
+  #   @post = Post.find(params[:post_id])
+  # end
 
   def create
-    @model = Post.find(params[:post_id])
+    if params[:post_id]
+      @model = Post.find(params[:post_id])
+    else
+      @model = Comment.find(params[:comment][:commentable_id])
+    end
+
+    params[:comment].delete(:commentable_id)
 
     @comment = @model.comments.new(params[:comment])
     @comment.user = current_user
     @comment.save
 
-    redirect_to post_comments_path
+    print "*" * 50
+    p @comment.top_level_post
+    redirect_to post_comments_path(@comment.top_level_post)
   end
 
   def show
