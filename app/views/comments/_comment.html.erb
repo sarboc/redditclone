@@ -1,7 +1,9 @@
 <li>
   <p><%= comment.text %></p>
   <div class="reply">
-    <p><a href="#" class="reply-link">Reply</a></p>
+    <% if current_user %>
+      <p><a href="#" class="reply-link">Reply</a></p>
+    <% end %>
     <div class="reply-form hidden">
       <%= render "comment_comment_form", comment: comment %>
     </div>
