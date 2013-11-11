@@ -14,7 +14,7 @@ class Vote < ActiveRecord::Base
   # end
 
   after_save :q_background #:count_votes
-  after_destroy :q_background #:count_votes
+  after_destroy :count_votes
 
   def q_background
     VoteCount.perform_async(self.id)
